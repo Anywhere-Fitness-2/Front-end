@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 
 export default function ClassCard(props) {
   // const dispatch = useDispatch();
+  console.log('class card: ',{props});
 
   return (
     <div className="col-md-6">
