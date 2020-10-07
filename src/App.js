@@ -18,6 +18,7 @@ import Dashboard from './components/student/Dashboard';
 // Instructor
 import AddClass from "./components/instructor/AddClass"
 import InstrClass from "./components/instructor/InstrClass"
+import Profile from './components/student/Profile';
 
 
 // import * as act from './store/actions'
@@ -68,7 +69,7 @@ function App() {
 
           <PrivateRoute path='/profile/edit'>
           </PrivateRoute>
-          <PrivateRoute path='/profile'>
+          <PrivateRoute path='/profile' component={Profile}>
           </PrivateRoute>
           <PrivateRoute path='/dashboard' component={Dashboard}>
           </PrivateRoute>

@@ -6,6 +6,7 @@ import ClassSearch from './ClassSearch'
 import ClassesFilter from './ClassesFilter'
 // dummy data
 import { getClasses } from '../../data/sample'
+import UserSettings from './UserSettings'
 
 export default function Profile() {
   const dispatch = useDispatch()
@@ -27,13 +28,19 @@ export default function Profile() {
       <h2>
         User Profile
       </h2>
-      <h3>
-          Manage my Classes
-      </h3>
       <section>
+        <h3>
+          Edit Profile
+        </h3>
+        <UserSettings />
+      </section>
+      <section>
+        {/* <h3>
+          Manage my Classes
+        </h3>
         <div>
           <ClassesList classes={classes} deleteClass={deleteClass} />
-        </div>
+        </div> */}
       </section>
     </div>
   )

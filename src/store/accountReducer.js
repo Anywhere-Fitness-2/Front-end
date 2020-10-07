@@ -12,7 +12,7 @@ const initialAccountState = {
   isFetching: false,
 
   // STRETCH
-  classesRegistered: [], // array of class IDs
+  registered_classes: [], // array of class IDs
   billing: {
     credit_card: '',
     credit_card_exp: '',
@@ -34,14 +34,48 @@ export function accountReducer(state = initialAccountState, action) {
         isFetching: action.payload
       }
 
+    case 'ACCOUNT_DELETE':
+      return {
+        ...initialAccountState,
+        errors: state.errors
+      }
+
     case 'ACCOUNT_UPDATE':
       return {
         ...state,
         user: {
           ...state.user,
+          id: action.payload.user.id || state.user.id,
+          email: action.payload.user.email || state.user.email,
+          instructor: action.payload.user.instructor || state.user.instructor,  // in case Role changes
           name: action.payload.user.name || state.user.name,
           zip: action.payload.user.zip || state.user.zip,
         }
+      }
+
+    case 'ACCOUNT_CLASS_REGISTER':
+      console.log('regged: ', state.registered_classes)
+      console.log('payload(id): ', action.payload)
+      return {
+        ...state,
+        // registered_classes: state.registered_classes.push(action.payload)
+        // registered_classes: [...state.registered_classes].includes(action.payload) ? 
+        //   [...state.registered_classes] :
+        //   [...state.registered_classes].push(action.payload)
+      }
+  
+    case 'ACCOUNT_CLASS_DELETE':
+      return {
+        ...state,
+        registered_classes: state.registered_classes.filter(item => {
+          return (item.id !== action.payload)
+        })
+      }
+
+    case 'ACCOUNT_CLASS_UPDATE':
+      return {
+        ...state,
+        registered_classes: action.payload
       }
 
     case 'ACCOUNT_ERROR':

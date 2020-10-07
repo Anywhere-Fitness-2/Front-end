@@ -22,6 +22,7 @@ export default function ClassesList(props) {
   }, [pageNum])
 
 
+  console.log('props in list:', {props})
   return (
     <div className="container-fluid d-flex justify-content-center">
       <div className="row">

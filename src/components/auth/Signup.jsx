@@ -27,11 +27,11 @@ const useStyles = makeStyles((theme) => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
     color: "#000000",
-    
+
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    color:"#FFAB00",
+    color: "#FFAB00",
     backgroundColor: "#000000",
     '&:hover': {
       color: "#000000",
@@ -76,31 +76,35 @@ export default function Signup(props) {
   const [user, setUser] = useState(defaultUser);
   const history = useHistory();
   const dispatch = useDispatch();
-  
+
   function changeHandler(e) {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
-      });
+    });
   }
 
   function submitHandler(e) {
     e.preventDefault();
-    console.log({user});
+    console.log({ user });
     dispatch({ type: 'APP_FETCHING', payload: true })
     api.post('/auth/register', user)  // fixedUser
       .then(res => {
         console.log(res.data)
         localStorage.setItem('authToken', JSON.stringify(res.data.token))
-        dispatch({type: 'APP_LOGIN', payload: res.data.token})
-        dispatch({type: 'ACCOUNT_UPDATE', payload: { user: res.data.saved } })
-        history.push('/');
+        dispatch({ type: 'APP_LOGIN', payload: res.data.token })
+        dispatch({ type: 'ACCOUNT_UPDATE', payload: { user: res.data.saved } })
+        if (!!res.data.saved.instructor === true) {
+          history.push('/instructor/classes') 
+        } else {
+          history.push('/dashboard');
+        }
       })
       .catch(err => console.log({ err }))
       .finally(() => {
         dispatch({ type: 'APP_FETCHING', payload: false })
-    })
-}
+      })
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -111,7 +115,7 @@ export default function Signup(props) {
         </Typography>
         <form className={classes.form} noValidate onSubmit={submitHandler}>
           <TextField
-          label="Email Address"
+            label="Email Address"
             variant="outlined"
             margin="normal"
             required
@@ -144,7 +148,7 @@ export default function Signup(props) {
             variant="contained"
             className={classes.submit}
           >
-            Sign In
+            Sign Up
           </Button>
         </form>
       </div>

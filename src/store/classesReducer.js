@@ -36,7 +36,6 @@ const initialClassesState = {
 
 export function classesReducer(state = initialClassesState, action) {
 
-
   switch (action.type) {
 
     case 'CLASSES_FETCHING':
@@ -73,9 +72,23 @@ export function classesReducer(state = initialClassesState, action) {
         filters: initialFiltersState,
         search: '',
       }
+
+    case 'CLASSES_LIST_SEARCH_RESET':
+      return {
+        ...state,
+        list: filterClassList(state.raw_list, state.filters),
+        search: '',
+      }
+
+    case 'CLASSES_LIST_FILTERS_RESET':
+      return {
+        ...state,
+        list: searchClassList(state.raw_list, state.search),
+        filters: initialFiltersState,
+      }
         
-      default:
-        return state;
+    default:
+      return state;
     }
 }
 
@@ -104,7 +117,7 @@ function filterClassList(list, filters) {
 
 function searchClassList(list, search) {
   console.log('search(start): ', list.length)
-  const searchArr = search.split(' ');
+  const searchArr = search.toLowerCase().split(' ');
   console.log('search(arr): ', searchArr)
   const result = list.filter(item => {
     return (

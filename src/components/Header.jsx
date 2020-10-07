@@ -23,19 +23,26 @@ export default function Header() {
       </div>
       <nav className='header-section'>
         <ul>
-          <li>
-            <Link to='/classes'>Classes</Link>
-          </li>
           {loggedIn ? (
-            <li>
-              <Link to='/logout'>Logout</Link>
-            </li>) : (<>
-            <li>
-              <Link to='/signup'>Sign Up</Link>
-            </li>
-            <li>
-              <Link to='/login'>Log In</Link>
-            </li></>)
+            <>
+              <li>
+                <Link to='/dashboard'>Dashboard</Link>
+              </li>
+              <li>
+                <Link to='/profile'>Profile</Link>
+              </li>
+              <li>
+                <Link to='/logout'>Logout</Link>
+              </li>
+            </>) : (
+            <>
+              <li>
+                <Link to='/signup'>Sign Up</Link>
+              </li>
+              <li>
+                <Link to='/login'>Log In</Link>
+              </li>
+            </>)
           }
           {/* {loggedIn ? (<a onClick={logoutHandler}>Logout</a>) : (<Link to='/login'>Login</Link>)} */}
         </ul>
