@@ -21,34 +21,33 @@ $react-link-color: #fbca61;
 }
 
 
-body {
-  // background: radial-gradient(#e5e5e5, #ffff, #e5e5e5);
-  // background-color: $react-background;
-  background-color: $primary-grey;
-  color:$primary-color;
-  h2 {
-      font-size: 2.5rem;
-  }
-  form {
-      // border: 1px solid $primary-color;
-      box-shadow: 1px 1px 3px 1px;
-      border-radius: 10px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin: 2%;
-      padding: 2%;
-      max-width: 100%;
-      width: 95%;
-      input, label {
-          margin-bottom: 2%;
-          color:$primary-color;
-          font-size: 1.2rem;
-      }
-      span {
-          padding: 10px;
-      }
-  }
-}
-
+// body {
+//   // background: radial-gradient(#e5e5e5, #ffff, #e5e5e5);
+//   // background-color: $react-background;
+//   background-color: $primary-grey;
+//   color:$primary-color;
+//   h2 {
+//       font-size: 2.5rem;
+//   }
+//   form {
+//       // border: 1px solid $primary-color;
+//       box-shadow: 1px 1px 3px 1px;
+//       border-radius: 10px;
+//       margin: 0 auto;
+//       display: flex;
+//       flex-direction: row;
+//       align-items: center;
+//       margin: 2%;
+//       padding: 2%;
+//       max-width: 100%;
+//       width: 95%;
+//       input, label {
+//           margin-bottom: 2%;
+//           color:$primary-color;
+//           font-size: 1.2rem;
+//       }
+//       span {
+//           padding: 10px;
+//       }
+//   }
+// }
